@@ -68,5 +68,30 @@ return [
     | The URL at which the Vite development server runs.
     | This is used to generate the script tags when developing.
     */
-    'dev_url' => 'https://localhost:3000',
+    'dev_url' => 'http://localhost:3000',
+    /*
+    |--------------------------------------------------------------------------
+    | Inject asset-fixing plugin
+    |--------------------------------------------------------------------------
+    | Currently, Vite does not support loading assets from an URL other than
+    | the development server's URL. If this option is enabled, a plugin fixing
+    | this issue will be injected.
+    | See: https://github.com/innocenzi/laravel-vite/issues/31
+    */
+    'asset_plugin' => [
+        'find_regex' => '/\/resources\/(.*)\.(svg|jp?g|png|webp)/',
+        'replace_with' => '/resources/$1.$2',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Commands
+    |--------------------------------------------------------------------------
+    | Defines the list of artisan commands that will be executed when
+    | the development server starts.
+    */
+    'commands' => [
+        'vite:aliases',
+        // 'typescript:generate'
+    ],
 ];
